@@ -1,0 +1,125 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    /*background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);*/
+    background-color: #5c1111;
+}
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*background-attachment: fixed;*/
+}
+a {
+    text-decoration: none;
+    color: #5c1111;
+}
+.container {
+    position: relative;
+    margin-top: -16px;
+    height: 500px;
+    width: 90%;
+    background-image: transparent;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+}
+.header {
+    font-family: 'Cedarville Cursive';
+    font-size: 45px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+#grid {
+    display: grid;
+    height: 220px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+    align-items: center;
+}
+#grid > div {
+    font-size: 30px;
+    padding: .5em;
+    color: #ffffff;
+    background: white;
+    text-align: center;
+}
+.ash-img {
+    position: relative;
+    width: 95%;
+    height: 50%;
+    object-fit: cover;
+}
+
+
+.dropbtn {
+    position: relative;
+    background-color: #861818;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border: solid;
+    border-color: white;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: transparent;
+    border: solid;
+    border-color: white;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 96%;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 2%;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown a:hover {background-color: #ddd;}
+  
+  .show {display: block;}
+
+  .plan-schedule {
+    position: relative;
+    background-color: white;
+  }
+
+  table, th, td {
+    border:1px solid black;
+    margin: auto;
+    padding: 10px;
+  }
+
