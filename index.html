@@ -15,13 +15,12 @@
 </head>
 <body>
 
-    <script src="javascript/particles.js"></script>
-    <canvas id="canvas"></canvas>
+    <!-- <script src="javascript/particles.js"></script> -->
+    <canvas id="bg"></canvas>
 
     <div class="container">
 
         <h1 class="header">To my love, Ash</h1>
-        <h2 style="color: white; text-align: center;">GOOD LUCK WITH FINALS BABY!!!</h2>
         
 
         <div class="container">
@@ -214,6 +213,130 @@
         </div>
 
     </div>
+
+      <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+
+      <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.138.3/build/three.module.js"
+            }
+        }
+      </script>
+
+        <script type="module">
+            import * as THREE from 'https://unpkg.com/three/build/three.module.js'
+            import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js';
+
+
+            /* CREATE SCENE, CAMERA, RENDERER, CONTROLS, AND LIGHT */
+
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 100000 );
+                const renderer = new THREE.WebGLRenderer( { canvas: document.querySelector('#bg') });
+                const controls = new OrbitControls( camera, renderer.domElement );
+                // controls.enableRotate = false;
+                controls.enableZoom = false;
+                
+
+                renderer.setPixelRatio( window.devicePixelRatio );
+                renderer.setSize( window.innerWidth, window.innerHeight );
+                camera.position.setZ(1);
+                camera.position.setX(5);
+                camera.position.setY(1);
+
+                renderer.render( scene, camera );
+
+                const pointLight = new THREE.PointLight(0xfffff, 1);
+                pointLight.position.set( 1, 1, 1);
+                scene.add(pointLight);
+
+
+            /* END SCENE, CAMERA, RENDERER, CONTROLS, AND LIGHT */
+
+
+            /* CREATE HEART OBJECT */
+
+                const extrudeSettings = {
+                    amount: 8,
+                    bevelEnabled: true,
+                    bevelSegments: 2,
+                    steps: 2,
+                    bevelSize: 20,
+                    bevelThickness: 20
+                };
+
+                let heartShape = new THREE.Shape();
+                heartShape.moveTo(25, 25);
+                heartShape.bezierCurveTo(25, 25, 20, 0, 0, 0);
+                heartShape.bezierCurveTo(-30, 0, -30, 35, -30, 35);
+                heartShape.bezierCurveTo(-30, 55, -10, 77, 25, 95);
+                heartShape.bezierCurveTo(60, 77, 80, 55, 80, 35);
+                heartShape.bezierCurveTo(80, 35, 80, 0, 50, 0);
+                heartShape.bezierCurveTo(35, 0, 25, 25, 25, 25);
+
+                let geometry = new THREE.ExtrudeGeometry(
+                    heartShape,
+                    extrudeSettings
+                );
+
+                let material = new THREE.MeshNormalMaterial({
+                    flatShading: true
+                });
+
+                // make atmosphere
+                for (let i = 0; i < 600; i++) {
+
+                    let heart = new THREE.Mesh(
+                        geometry,
+                        material
+                    );
+
+                    heart.position.set(
+                        (Math.random() - 0.5) * 1000,
+                        (Math.random() - 0.5) * 1000,
+                        (Math.random() - 0.5) * 1000
+                    );
+
+                    heart.scale.set(.5, .5, .5);
+
+                    heart.rotation.x = Math.PI;
+                    heart.rotation.y = Math.random() * Math.PI;
+
+                    scene.add(heart);
+
+                }
+
+            /* END HEART OBJECT */
+
+            /* CREATE WINDOW RESIZE FUNCTION */
+
+                window.addEventListener('resize', onWindowResize, false)
+                function onWindowResize() {
+                    camera.aspect = window.innerWidth / window.innerHeight
+                    camera.updateProjectionMatrix()
+                    renderer.setSize(window.innerWidth, window.innerHeight)
+                    animate();
+                }
+
+            /* END WINDOW RESIZE FUNCTION */
+
+
+            /* CREATE ANIMATION FUNCTION */
+
+                function animate() {
+
+                    camera.rotation.y += 0.005;
+
+                    requestAnimationFrame( animate );
+                    // controls.update();
+                    renderer.render( scene, camera );
+
+                }
+                animate();
+
+            /* END ANIMATION FUNCTION */
+        </script>
 
 </body>
 </html>
