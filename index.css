@@ -64,7 +64,7 @@ a {
 
 .dropbtn {
     position: relative;
-    background: linear-gradient(0.25turn, pink, lightblue);
+    background: linear-gradient(0.25turn, rgb(255, 40, 76), rgb(61, 166, 200));
     color: white;
     padding: 16px;
     font-size: 16px;
