@@ -4,8 +4,6 @@ html, body {
     height: 100%;
     width: 100%;
     overflow-x: hidden;
-    /*background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);*/
-    background-color: #5c1111;
 }
 canvas {
     position: absolute;
@@ -66,7 +64,7 @@ a {
 
 .dropbtn {
     position: relative;
-    background-color: #861818;
+    background: linear-gradient(0.25turn, pink, lightblue);
     color: white;
     padding: 16px;
     font-size: 16px;
