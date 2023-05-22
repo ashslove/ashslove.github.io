@@ -15,7 +15,6 @@
 </head>
 <body>
 
-    <!-- <script src="javascript/particles.js"></script> -->
     <canvas id="bg"></canvas>
 
     <div class="container">
@@ -125,6 +124,46 @@
                 </div>
             </div>
 
+            <script>
+                function myFunctionFour() {
+                  document.getElementById("myDropdownFour").classList.toggle("show");
+                }
+                window.onclick = function(event) {
+                  if (!event.target.matches('.dropbtn')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                      var openDropdown = dropdowns[i];
+                      if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                      }
+                    }
+                  }
+                }
+            </script>
+            <div class="dropdown">
+                <button onclick="myFunctionFour()" class="dropbtn">Hey :D<br>5/22/2023</button>
+                <div id="myDropdownFour" class="dropdown-content">
+                    <p>
+                        Hey Ash,<br><br>
+
+                        This one isn't a poem but I just wanted
+                        to let you know you're my world, my light, my pride, and my one true love.<br><br>
+
+                        Every day you surprise me with how much I could fall for someone. 
+                        You make me smile so much and I can't wait to see you again even though it's been like 12 hours lol.<br><br>
+
+                        <a class="dance-link" href="https://www.youtube.com/watch?v=DL8UyWnPbQo">Here it is</a><br>
+
+                        Anyway, I have something I want us to practice tonight, or tomorrow. Any time works really lol.<br><br>
+
+                        Have a good first day of classes and I'm very excited to see you later.🤠
+                        
+
+                    </p>
+                </div>
+            </div>
+
 
             <div style="height: 50px;"></div>
             
@@ -214,129 +253,129 @@
 
     </div>
 
-      <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+    <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
 
-      <script type="importmap">
-        {
-            "imports": {
-                "three": "https://unpkg.com/three@0.138.3/build/three.module.js"
-            }
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.138.3/build/three.module.js"
         }
-      </script>
+    }
+    </script>
 
-        <script type="module">
-            import * as THREE from 'https://unpkg.com/three/build/three.module.js'
-            import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js';
-
-
-            /* CREATE SCENE, CAMERA, RENDERER, CONTROLS, AND LIGHT */
-
-                const scene = new THREE.Scene();
-                const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 100000 );
-                const renderer = new THREE.WebGLRenderer( { canvas: document.querySelector('#bg') });
-                const controls = new OrbitControls( camera, renderer.domElement );
-                controls.enableRotate = false;
-                controls.enableZoom = false;
-                
-
-                renderer.setPixelRatio( window.devicePixelRatio );
-                renderer.setSize( window.innerWidth, window.innerHeight );
-                camera.position.setZ(1);
-                camera.position.setX(5);
-                camera.position.setY(1);
-
-                renderer.render( scene, camera );
-
-                const pointLight = new THREE.PointLight(0xfffff, 1);
-                pointLight.position.set( 1, 1, 1);
-                scene.add(pointLight);
+    <script type="module">
+        import * as THREE from 'https://unpkg.com/three/build/three.module.js'
+        import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js';
 
 
-            /* END SCENE, CAMERA, RENDERER, CONTROLS, AND LIGHT */
+        /* CREATE SCENE, CAMERA, RENDERER, CONTROLS, AND LIGHT */
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 100000 );
+            const renderer = new THREE.WebGLRenderer( { canvas: document.querySelector('#bg') });
+            const controls = new OrbitControls( camera, renderer.domElement );
+            // controls.enableRotate = false;
+            controls.enableZoom = false;
+            
+
+            renderer.setPixelRatio( window.devicePixelRatio );
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            camera.position.setZ(1);
+            camera.position.setX(5);
+            camera.position.setY(1);
+
+            renderer.render( scene, camera );
+
+            const pointLight = new THREE.PointLight(0xfffff, 1);
+            pointLight.position.set( 1, 1, 1);
+            scene.add(pointLight);
 
 
-            /* CREATE HEART OBJECT */
+        /* END SCENE, CAMERA, RENDERER, CONTROLS, AND LIGHT */
 
-                const extrudeSettings = {
-                    amount: 8,
-                    bevelEnabled: true,
-                    bevelSegments: 2,
-                    steps: 2,
-                    bevelSize: 20,
-                    bevelThickness: 20
-                };
 
-                let heartShape = new THREE.Shape();
-                heartShape.moveTo(25, 25);
-                heartShape.bezierCurveTo(25, 25, 20, 0, 0, 0);
-                heartShape.bezierCurveTo(-30, 0, -30, 35, -30, 35);
-                heartShape.bezierCurveTo(-30, 55, -10, 77, 25, 95);
-                heartShape.bezierCurveTo(60, 77, 80, 55, 80, 35);
-                heartShape.bezierCurveTo(80, 35, 80, 0, 50, 0);
-                heartShape.bezierCurveTo(35, 0, 25, 25, 25, 25);
+        /* CREATE HEART OBJECT */
 
-                let geometry = new THREE.ExtrudeGeometry(
-                    heartShape,
-                    extrudeSettings
+            const extrudeSettings = {
+                amount: 8,
+                bevelEnabled: true,
+                bevelSegments: 2,
+                steps: 2,
+                bevelSize: 20,
+                bevelThickness: 20
+            };
+
+            let heartShape = new THREE.Shape();
+            heartShape.moveTo(25, 25);
+            heartShape.bezierCurveTo(25, 25, 20, 0, 0, 0);
+            heartShape.bezierCurveTo(-30, 0, -30, 35, -30, 35);
+            heartShape.bezierCurveTo(-30, 55, -10, 77, 25, 95);
+            heartShape.bezierCurveTo(60, 77, 80, 55, 80, 35);
+            heartShape.bezierCurveTo(80, 35, 80, 0, 50, 0);
+            heartShape.bezierCurveTo(35, 0, 25, 25, 25, 25);
+
+            let geometry = new THREE.ExtrudeGeometry(
+                heartShape,
+                extrudeSettings
+            );
+
+            let material = new THREE.MeshNormalMaterial({
+                flatShading: true
+            });
+
+            // make atmosphere
+            for (let i = 0; i < 600; i++) {
+
+                let heart = new THREE.Mesh(
+                    geometry,
+                    material
                 );
 
-                let material = new THREE.MeshNormalMaterial({
-                    flatShading: true
-                });
+                heart.position.set(
+                    (Math.random() - 0.5) * 1000,
+                    (Math.random() - 0.5) * 1000,
+                    (Math.random() - 0.5) * 1000
+                );
 
-                // make atmosphere
-                for (let i = 0; i < 600; i++) {
+                heart.scale.set(.5, .5, .5);
 
-                    let heart = new THREE.Mesh(
-                        geometry,
-                        material
-                    );
+                heart.rotation.x = Math.PI;
+                heart.rotation.y = Math.random() * Math.PI;
 
-                    heart.position.set(
-                        (Math.random() - 0.5) * 1000,
-                        (Math.random() - 0.5) * 1000,
-                        (Math.random() - 0.5) * 1000
-                    );
+                scene.add(heart);
 
-                    heart.scale.set(.5, .5, .5);
+            }
 
-                    heart.rotation.x = Math.PI;
-                    heart.rotation.y = Math.random() * Math.PI;
+        /* END HEART OBJECT */
 
-                    scene.add(heart);
+        /* CREATE WINDOW RESIZE FUNCTION */
 
-                }
-
-            /* END HEART OBJECT */
-
-            /* CREATE WINDOW RESIZE FUNCTION */
-
-                window.addEventListener('resize', onWindowResize, false)
-                function onWindowResize() {
-                    camera.aspect = window.innerWidth / window.innerHeight
-                    camera.updateProjectionMatrix()
-                    renderer.setSize(window.innerWidth, window.innerHeight)
-                    animate();
-                }
-
-            /* END WINDOW RESIZE FUNCTION */
-
-
-            /* CREATE ANIMATION FUNCTION */
-
-                function animate() {
-
-                    camera.rotation.y += 0.005;
-
-                    requestAnimationFrame( animate );
-                    // controls.update();
-                    renderer.render( scene, camera );
-
-                }
+            window.addEventListener('resize', onWindowResize, false)
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight
+                camera.updateProjectionMatrix()
+                renderer.setSize(window.innerWidth, window.innerHeight)
                 animate();
+            }
 
-            /* END ANIMATION FUNCTION */
-        </script>
+        /* END WINDOW RESIZE FUNCTION */
+
+
+        /* CREATE ANIMATION FUNCTION */
+
+            function animate() {
+
+                camera.rotation.y += 0.005;
+
+                requestAnimationFrame( animate );
+                // controls.update();
+                renderer.render( scene, camera );
+
+            }
+            animate();
+
+        /* END ANIMATION FUNCTION */
+    </script>
 
 </body>
 </html>
